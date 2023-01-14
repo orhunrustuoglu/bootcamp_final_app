@@ -1,3 +1,6 @@
+import 'package:bootcamp_final_app/ui/cubit/meal_details_page_cubit.dart';
+import 'package:bootcamp_final_app/ui/cubit/my_cart_page_cubit.dart';
+
 import '/ui/cubit/home_page_cubit.dart';
 import 'ui/screens/main_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +18,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => HomePageCubit()),
+        BlocProvider(create: (context) => MyCartPageCubit()),
+        BlocProvider(create: (context) => MealDetailsPageCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
