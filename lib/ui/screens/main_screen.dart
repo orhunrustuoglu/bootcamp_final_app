@@ -1,23 +1,20 @@
-import 'package:bootcamp_final_app/ui/screens/tabs/home_screen_tabs/my_cart_tab.dart';
+import '/ui/screens/pages/home_page.dart';
+import '/ui/screens/pages/my_cart_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'tabs/home_screen_tabs/meals_tab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../cubit/home_screen_cubit.dart';
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MainScreenState extends State<MainScreen> {
   var screens = const [
-    MealsTab(),
-    MyCartTab(),
+    HomePage(),
+    MyCartPage(),
   ];
   int screenIndex = 0;
 

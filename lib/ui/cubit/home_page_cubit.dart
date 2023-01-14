@@ -4,8 +4,8 @@ import '../../data/entitiy/meals_response.dart';
 import '/data/repo/meals_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreenCubit extends Cubit<MealsResponse> {
-  HomeScreenCubit() : super(MealsResponse(meals: []));
+class HomePageCubit extends Cubit<MealsResponse> {
+  HomePageCubit() : super(MealsResponse(meals: []));
 
   var mRepo = MealsRepository();
 

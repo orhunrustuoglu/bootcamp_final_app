@@ -1,28 +1,27 @@
-import 'package:bootcamp_final_app/data/entitiy/meal.dart';
-import 'package:bootcamp_final_app/ui/components/meal_card.dart';
+import '../../cubit/home_page_cubit.dart';
+import '/data/entitiy/meal.dart';
+import '/ui/components/meal_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../data/entitiy/meals_response.dart';
 
-import '../../../../data/entitiy/meals_response.dart';
-import '../../../cubit/home_screen_cubit.dart';
-
-class MealsTab extends StatefulWidget {
-  const MealsTab({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MealsTab> createState() => _MealsTabState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MealsTabState extends State<MealsTab> {
+class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    context.read<HomeScreenCubit>().getMeals();
+    context.read<HomePageCubit>().getMeals();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeScreenCubit, MealsResponse>(
+    return BlocBuilder<HomePageCubit, MealsResponse>(
         builder: (context, mealsResponse) {
       List<Meal> meals = mealsResponse.meals;
       if (mealsResponse.success == 0) {

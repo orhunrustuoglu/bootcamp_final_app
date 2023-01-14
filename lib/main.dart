@@ -1,5 +1,5 @@
-import 'package:bootcamp_final_app/ui/cubit/home_screen_cubit.dart';
-import 'package:bootcamp_final_app/ui/screens/home_screen.dart';
+import '/ui/cubit/home_page_cubit.dart';
+import 'ui/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,14 +14,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => HomeScreenCubit()),
+        BlocProvider(create: (context) => HomePageCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomeScreen(),
+        home: const MainScreen(),
       ),
     );
   }
