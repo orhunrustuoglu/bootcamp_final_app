@@ -1,5 +1,5 @@
-import 'package:bootcamp_final_app/data/entitiy/meal.dart';
-import 'package:bootcamp_final_app/ui/screens/meal_details_screen.dart';
+import '/data/entitiy/meal.dart';
+import '/ui/screens/meal_details_page.dart';
 import 'package:flutter/material.dart';
 
 class MealCard extends StatelessWidget {
@@ -12,7 +12,7 @@ class MealCard extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => MealDetailsScreen(
+            builder: (context) => MealDetailsPage(
                   meal: meal,
                 )),
       ),

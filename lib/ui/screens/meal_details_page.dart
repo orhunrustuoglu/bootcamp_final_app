@@ -1,9 +1,9 @@
 import 'package:bootcamp_final_app/data/entitiy/meal.dart';
 import 'package:flutter/material.dart';
 
-class MealDetailsScreen extends StatelessWidget {
+class MealDetailsPage extends StatelessWidget {
   final Meal meal;
-  const MealDetailsScreen({super.key, required this.meal});
+  const MealDetailsPage({super.key, required this.meal});
 
   @override
   Widget build(BuildContext context) {
