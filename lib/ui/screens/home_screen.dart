@@ -1,6 +1,7 @@
-import 'package:bootcamp_final_app/data/entitiy/meal.dart';
-import 'package:bootcamp_final_app/data/entitiy/meals_response.dart';
-import 'package:bootcamp_final_app/ui/components/meal_card.dart';
+import 'package:bootcamp_final_app/ui/screens/tabs/home_screen_tabs/my_cart_tab.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'tabs/home_screen_tabs/meals_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,27 +15,37 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<HomeScreenCubit>().getMeals();
-  }
+  var screens = const [
+    MealsTab(),
+    MyCartTab(),
+  ];
+  int screenIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Menu")),
-        body: BlocBuilder<HomeScreenCubit, MealsResponse>(
-            builder: (context, mealsResponse) {
-          List<Meal> meals = mealsResponse.meals;
-          if (mealsResponse.success == 0) {
-            return const Center(child: CircularProgressIndicator.adaptive());
-          } else {
-            return ListView.builder(
-                itemCount: meals.length,
-                itemBuilder: ((context, index) =>
-                    MealCard(meal: meals[index])));
-          }
-        }));
+      appBar: AppBar(title: Text(screenIndex == 0 ? "Menu" : "My Cart")),
+      body: screens[screenIndex],
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: screenIndex,
+          onTap: (value) => setState(() => screenIndex = value),
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home_rounded,
+                  size: 30,
+                ),
+                label: "Home"),
+            BottomNavigationBarItem(
+                icon: SizedBox(
+                  height: 50,
+                  child: Icon(
+                    FontAwesomeIcons.cartShopping,
+                    size: 24,
+                  ),
+                ),
+                label: "My Cart"),
+          ]),
+    );
   }
 }

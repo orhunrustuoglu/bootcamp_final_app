@@ -1,4 +1,5 @@
 import 'package:bootcamp_final_app/data/entitiy/meal.dart';
+import 'package:bootcamp_final_app/ui/screens/meal_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class MealCard extends StatelessWidget {
@@ -7,8 +8,20 @@ class MealCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(meal.name),
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => MealDetailsScreen(
+                  meal: meal,
+                )),
+      ),
+      child: Card(
+        child: ListTile(
+          title: Text(meal.name),
+          trailing: const Icon(Icons.arrow_forward_ios),
+        ),
+      ),
     );
   }
 }
