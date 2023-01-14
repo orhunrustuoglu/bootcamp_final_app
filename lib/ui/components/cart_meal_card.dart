@@ -10,10 +10,20 @@ class CartMealCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: ListTile(
         leading: Image.network(
             "http://kasimadalan.pe.hu/yemekler/resimler/${cartMeal.imgName}"),
-        title: Text(cartMeal.name),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(cartMeal.name),
+            Text(
+              " x${cartMeal.amount.toString()}",
+              style: const TextStyle(color: Colors.grey),
+            ),
+          ],
+        ),
         trailing: IconButton(
             icon: const Icon(
               Icons.delete,

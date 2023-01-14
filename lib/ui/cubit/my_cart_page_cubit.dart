@@ -14,6 +14,7 @@ class MyCartPageCubit extends Cubit<CartMealsResponse> {
   }
 
   Future<void> deleteCartMeal(CartMeal cartMeal) async {
+    //TODO add snackbar to confirm
     await cMRepo.deleteCartMeal(cartMeal);
     getCartMeals();
   }

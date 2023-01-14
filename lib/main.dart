@@ -24,8 +24,26 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                selectedItemColor: Colors.redAccent),
+            primaryColor: Colors.redAccent,
+            scaffoldBackgroundColor: const Color(0xfff7f7f7),
+            outlinedButtonTheme: OutlinedButtonThemeData(
+              style: OutlinedButton.styleFrom(
+                  side: const BorderSide(
+                    color: Colors.redAccent,
+                  ),
+                  foregroundColor: Colors.redAccent,
+                  shape: const StadiumBorder()),
+            ),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.redAccent,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  shape: const StadiumBorder()),
+            ),
+            appBarTheme: const AppBarTheme(backgroundColor: Colors.redAccent)),
         home: const MainScreen(),
       ),
     );
