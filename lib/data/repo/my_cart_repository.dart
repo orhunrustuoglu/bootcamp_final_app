@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
+
 import '/data/entitiy/cart_meal.dart';
 
 import '/data/entitiy/cart_meals_response.dart';
@@ -18,10 +20,9 @@ class MyCartRepository {
     if (response.body.contains("success")) {
       return CartMealsResponse.fromJson(json.decode(response.body));
     } else {
-      return CartMealsResponse(
-          cartMeals: [],
-          success:
-              1); //success is 1 because the http request itself is successful
+      return CartMealsResponse(cartMeals: [], success: 1);
+      //success is 1 to alter the showcased UI and
+      //also because the http request itself is successful
     }
   }
 
@@ -35,6 +36,18 @@ class MyCartRepository {
       "yemek_siparis_adet": cartMeal.amount.toString(),
       "kullanici_adi": userName,
     };
+    var response = await http.post(url, body: bodyData);
+    print(response.body);
+  }
+
+  Future<void> deleteCartMeal(CartMeal cartMeal) async {
+    var url =
+        Uri.parse("http://kasimadalan.pe.hu/yemekler/sepettenYemekSil.php");
+    var bodyData = {
+      "sepet_yemek_id": cartMeal.id.toString(),
+      "kullanici_adi": cartMeal.userName,
+    };
+    //request is a POST, instead of DELETE?
     var response = await http.post(url, body: bodyData);
     print(response.body);
   }
