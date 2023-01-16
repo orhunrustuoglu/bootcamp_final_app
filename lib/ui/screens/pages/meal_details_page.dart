@@ -1,3 +1,5 @@
+import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
+
 import '/data/entitiy/cart_meal.dart';
 import '/data/entitiy/meal.dart';
 import '/data/repo/my_cart_repository.dart';
@@ -36,65 +38,89 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  "${meal.price}₺",
-                  style: const TextStyle(fontSize: 18),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Container(
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          color: primaryColor.withOpacity(0.2),
+                        ),
+                        child: Row(children: [
+                          TextButton(
+                              onPressed: () {
+                                if (amount > 0) {
+                                  setState(() => amount--);
+                                }
+                              },
+                              style: TextButton.styleFrom(
+                                  foregroundColor: primaryColor),
+                              child: const Icon(
+                                Icons.remove,
+                                size: 20,
+                              )),
+                          SizedBox(
+                            width: 15,
+                            child: Text(
+                              amount.toString(),
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                          ),
+                          TextButton(
+                              onPressed: () => setState(() => amount++),
+                              style: TextButton.styleFrom(
+                                  foregroundColor: primaryColor),
+                              child: const Icon(
+                                Icons.add,
+                                size: 20,
+                              )),
+                        ])),
+                    const Spacer(),
+                    Text(
+                      "${meal.price}₺",
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ],
                 ),
-                Text(meal.name),
-                Text(meal.name),
-              ],
-            ),
-          )
-        ],
-      ),
-      bottomNavigationBar: Material(
-        elevation: 10,
-        child: Container(
-          padding: const EdgeInsets.only(top: 10, right: 20, left: 20),
-          color: Colors.white,
-          child: SafeArea(
-            child: Row(
-              children: [
-                OutlinedButton(
-                    onPressed: () => setState(() => amount--),
-                    child: const Icon(Icons.remove)),
-                const SizedBox(width: 10),
-                SizedBox(
-                  width: 20,
-                  child: Text(
-                    amount.toString(),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 18),
-                  ),
+                const SizedBox(height: 15),
+                const Text(
+                  "Food Details",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(width: 10),
-                OutlinedButton(
-                    onPressed: () => setState(() => amount++),
-                    child: const Icon(Icons.add)),
-                const Spacer(),
-                ElevatedButton(
-                  onPressed: () {
-                    var cartMeal = CartMeal(
-                        id: widget.meal.id,
-                        name: widget.meal.name,
-                        imgName: widget.meal.imgName,
-                        price: widget.meal.price,
-                        amount: amount,
-                        userName: MyCartRepository.userName);
-
-                    print(cartMeal.amount);
-                    context.read<MealDetailsPageCubit>().addToCart(cartMeal);
-                    Navigator.pop(context);
-                  },
-                  child: const Text(
-                    "ADD TO CART",
-                    style: TextStyle(fontSize: 18),
-                  ),
+                const SizedBox(height: 5),
+                const Text(
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros urna, bibendum quis justo vel, malesuada fringilla erat. Donec auctor tellus magna, ac sollicitudin purus ultrices sit amet. Donec blandit lorem dolor, non volutpat felis commodo quis. In hac habitasse platea dictumst. Proin feugiat eleifend nisi, ultrices ultrices diam suscipit sit amet.",
+                  textAlign: TextAlign.justify,
                 ),
               ],
             ),
           ),
-        ),
+          const SizedBox(height: 25),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: ElevatedButton(
+              onPressed: () {
+                var cartMeal = CartMeal(
+                    id: widget.meal.id,
+                    name: widget.meal.name,
+                    imgName: widget.meal.imgName,
+                    price: widget.meal.price,
+                    amount: amount,
+                    userName: MyCartRepository.userName);
+
+                print(cartMeal.amount);
+                context.read<MealDetailsPageCubit>().addToCart(cartMeal);
+                Navigator.pop(context);
+              },
+              child: const Text(
+                "ADD TO CART",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

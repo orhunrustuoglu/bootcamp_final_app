@@ -33,8 +33,11 @@ class _MyCartPageState extends State<MyCartPage> {
       } else {
         return ListView.builder(
             itemCount: cartMeals.length,
-            itemBuilder: ((context, index) =>
-                CartMealCard(cartMeal: cartMeals[index])));
+            itemBuilder: ((context, index) => Padding(
+                  padding:
+                      const EdgeInsets.only(right: 20, left: 20, bottom: 10),
+                  child: CartMealCard(cartMeal: cartMeals[index]),
+                )));
       }
     });
   }

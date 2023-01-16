@@ -30,15 +30,14 @@ class _MainScreenState extends State<MainScreen> {
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home_rounded,
-                  size: 30,
+                  size: 42,
                 ),
                 label: "Home"),
             BottomNavigationBarItem(
                 icon: SizedBox(
-                  height: 50,
                   child: Icon(
                     FontAwesomeIcons.cartShopping,
-                    size: 24,
+                    size: 28,
                   ),
                 ),
                 label: "My Cart"),

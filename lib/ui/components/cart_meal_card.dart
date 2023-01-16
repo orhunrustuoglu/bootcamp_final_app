@@ -1,7 +1,9 @@
+import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
 import 'package:bootcamp_final_app/data/entitiy/cart_meal.dart';
 import 'package:bootcamp_final_app/ui/cubit/my_cart_page_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart';
 
 class CartMealCard extends StatelessWidget {
   final CartMeal cartMeal;
@@ -9,28 +11,64 @@ class CartMealCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: ListTile(
-        leading: Image.network(
-            "http://kasimadalan.pe.hu/yemekler/resimler/${cartMeal.imgName}"),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(cartMeal.name),
-            Text(
-              " x${cartMeal.amount.toString()}",
-              style: const TextStyle(color: Colors.grey),
+    return Container(
+      height: 150,
+      padding: const EdgeInsets.all(10),
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        color: Colors.white,
+      ),
+      child: Row(
+        children: [
+          Image.network(
+            "http://kasimadalan.pe.hu/yemekler/resimler/${cartMeal.imgName}",
+            fit: BoxFit.contain,
+            width: 150,
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        cartMeal.name,
+                        style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: textColorDark),
+                      ),
+                      GestureDetector(
+                        onTap: () => context
+                            .read<MyCartPageCubit>()
+                            .deleteCartMeal(cartMeal),
+                        child: Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: ShapeDecoration(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                color: primaryColor.withOpacity(0.2)),
+                            child: const Icon(
+                              Icons.delete,
+                              color: primaryColor,
+                            )),
+                      )
+                    ]),
+                const SizedBox(height: 20),
+                Text(
+                  "${cartMeal.price}₺",
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: textColorLight),
+                ),
+              ],
             ),
-          ],
-        ),
-        trailing: IconButton(
-            icon: const Icon(
-              Icons.delete,
-              color: Colors.red,
-            ),
-            onPressed: () =>
-                context.read<MyCartPageCubit>().deleteCartMeal(cartMeal)),
+          ),
+        ],
       ),
     );
   }
