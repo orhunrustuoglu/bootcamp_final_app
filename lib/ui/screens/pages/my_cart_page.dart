@@ -1,9 +1,12 @@
+import 'package:bootcamp_final_app/data/constants/animations.dart';
+import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
 import 'package:bootcamp_final_app/data/entitiy/cart_meal.dart';
 import 'package:bootcamp_final_app/data/entitiy/cart_meals_response.dart';
 import 'package:bootcamp_final_app/ui/components/cart_meal_card.dart';
 import 'package:bootcamp_final_app/ui/cubit/my_cart_page_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class MyCartPage extends StatefulWidget {
   const MyCartPage({super.key});
@@ -27,9 +30,23 @@ class _MyCartPageState extends State<MyCartPage> {
       if (mealsResponse.success == 0) {
         return const Center(child: CircularProgressIndicator.adaptive());
       } else if (mealsResponse.cartMeals.isEmpty) {
-        return const Center(
-          child: Text("Your cart is empty..."),
-        );
+        return Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Lottie.asset(
+              orderNowAnimation,
+              height: 100,
+            ),
+            const SizedBox(height: 20),
+            const Center(
+              child: Text(
+                "Your cart is empty...",
+                style: TextStyle(color: textColorLight, fontSize: 16),
+              ),
+            )
+          ],
+        ));
       } else {
         return ListView.builder(
             itemCount: cartMeals.length,
