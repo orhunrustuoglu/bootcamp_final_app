@@ -13,4 +13,12 @@ class HomePageCubit extends Cubit<MealsResponse> {
     var mealsResponse = await mRepo.getMeals();
     emit(mealsResponse);
   }
+
+  Future<void> search(String query) async {
+    var mealsResponse = await mRepo.getMeals();
+    mealsResponse.meals = mealsResponse.meals
+        .where((m) => m.name.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+    emit(mealsResponse);
+  }
 }
