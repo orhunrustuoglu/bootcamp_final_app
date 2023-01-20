@@ -67,7 +67,10 @@ class _MainScreenState extends State<MainScreen> {
           )
         ],
       ),
-      body: screens[screenIndex],
+      body: Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: screens[screenIndex],
+      ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: screenIndex,
           onTap: (value) => setState(() => screenIndex = value),
