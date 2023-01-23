@@ -48,13 +48,41 @@ class _MyCartPageState extends State<MyCartPage> {
           ],
         ));
       } else {
-        return ListView.builder(
-            itemCount: cartMeals.length,
-            itemBuilder: ((context, index) => Padding(
-                  padding:
-                      const EdgeInsets.only(right: 20, left: 20, bottom: 10),
-                  child: CartMealCard(cartMeal: cartMeals[index]),
-                )));
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(children: [
+            Expanded(
+                child: ListView.builder(
+                    itemCount: cartMeals.length,
+                    itemBuilder: ((context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: CartMealCard(cartMeal: cartMeals[index]),
+                      );
+                    }))),
+            Container(
+              margin: const EdgeInsets.only(top: 10, bottom: 20),
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Total: ",
+                      style: TextStyle(color: textColorDark, fontSize: 16),
+                    ),
+                    Text(
+                      "${context.read<MyCartPageCubit>().getTotalPrice()}₺",
+                      style: const TextStyle(
+                          color: textColorDark,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                  ]),
+            )
+          ]),
+        );
       }
     });
   }

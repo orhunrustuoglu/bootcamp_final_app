@@ -10,6 +10,10 @@ class MyCartPageCubit extends Cubit<CartMealsResponse> {
 
   var cMRepo = MyCartRepository();
 
+  int getTotalPrice() {
+    return cMRepo.getTotalPrice;
+  }
+
   Future<void> getCartMeals() async {
     var cartMealsResponse = await cMRepo.getCartMeals();
     emit(cartMealsResponse);

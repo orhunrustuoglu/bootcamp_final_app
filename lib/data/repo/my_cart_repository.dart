@@ -7,6 +7,9 @@ import 'package:http/http.dart' as http;
 
 class MyCartRepository {
   static const String userName = "orhun_rustuoglu";
+  int totalPrice = 0;
+
+  int get getTotalPrice => totalPrice;
 
   Future<CartMealsResponse> getCartMeals() async {
     var url = Uri.parse(
@@ -16,7 +19,13 @@ class MyCartRepository {
     //the response.body is ["\n","\n","\n","\n","\n"]
     //thanks for the gift Mr. Adalan :)
     if (response.body.contains("success")) {
-      return CartMealsResponse.fromJson(json.decode(response.body));
+      CartMealsResponse cartMealsResponse =
+          CartMealsResponse.fromJson(json.decode(response.body));
+      totalPrice = 0;
+      for (var m in cartMealsResponse.cartMeals) {
+        totalPrice += m.price;
+      }
+      return cartMealsResponse;
     } else {
       return CartMealsResponse(cartMeals: [], success: 1);
       //success is 1 to alter the showcased UI and
@@ -35,6 +44,7 @@ class MyCartRepository {
       "kullanici_adi": userName,
     };
     var response = await http.post(url, body: bodyData);
+
     print(response.body);
   }
 
@@ -47,6 +57,7 @@ class MyCartRepository {
     };
     //request is a POST, instead of DELETE?
     var response = await http.post(url, body: bodyData);
+
     print(response.body);
   }
 }
