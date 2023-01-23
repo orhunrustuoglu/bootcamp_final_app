@@ -110,7 +110,10 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
           BlocBuilder<MealDetailsPageCubit, bool>(
               builder: ((context, confirmedStatus) {
             if (confirmedStatus) {
-              return const OrderInDeliveryCard();
+              return const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: OrderInDeliveryCard(),
+              );
             } else {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
