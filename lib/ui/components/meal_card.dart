@@ -23,7 +23,8 @@ class MealCard extends StatelessWidget {
       ).then((_) => context.read<MyCartPageCubit>().getCartMeals()),
       child: Container(
         width: MediaQuery.of(context).size.width / 2 -
-            25, //to roughly even populars and recommendations
+            50, //to roughly even populars and recommendations,
+        //also to provide a hint that the popular meals list is vertically scrolled
         padding: const EdgeInsets.all(10),
         decoration: ShapeDecoration(
           shape:
@@ -37,7 +38,7 @@ class MealCard extends StatelessWidget {
             Expanded(
               child: Image.network(
                 "http://kasimadalan.pe.hu/yemekler/resimler/${meal.imgName}",
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
                 width: double.infinity,
               ),
             ),

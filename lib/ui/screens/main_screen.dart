@@ -51,20 +51,20 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: GestureDetector(
-                onTap: () {
-                  if (isSearching) {
-                    searchController.clear();
-                    context.read<HomePageCubit>().getMeals();
-                  }
-                  ;
-                  setState(() => isSearching = !isSearching);
-                },
-                child: MyElevatedContainer(
-                    child: Icon(!isSearching ? Icons.search : Icons.close))),
-          )
+          if (screenIndex == 0)
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: GestureDetector(
+                  onTap: () {
+                    if (isSearching) {
+                      searchController.clear();
+                      context.read<HomePageCubit>().getMeals();
+                    }
+                    setState(() => isSearching = !isSearching);
+                  },
+                  child: MyElevatedContainer(
+                      child: Icon(!isSearching ? Icons.search : Icons.close))),
+            )
         ],
       ),
       body: Padding(

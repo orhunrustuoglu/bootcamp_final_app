@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     return BlocBuilder<HomePageCubit, MealsResponse>(
         builder: (context, mealsResponse) {
       List<Meal> meals = mealsResponse.meals;
+
       //and a little bit of, spice...
       List<Meal> popularMeals = meals.where((m) => m.price >= 25).toList();
       List<Meal> recommendationMeals =

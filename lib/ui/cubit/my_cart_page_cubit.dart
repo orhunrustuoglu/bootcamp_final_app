@@ -19,6 +19,10 @@ class MyCartPageCubit extends Cubit<CartMealsResponse> {
     emit(cartMealsResponse);
   }
 
+  void confirmOrder(BuildContext context, Function onPressed) {
+    SnackbarRepository.showConfirmOrderSnackbar(context, onPressed);
+  }
+
   void confirmDelete(BuildContext context, CartMeal cartMeal) {
     SnackbarRepository.showDeleteSnackbar(context, cartMeal);
   }

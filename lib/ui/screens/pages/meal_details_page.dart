@@ -1,4 +1,5 @@
 import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
+import 'package:bootcamp_final_app/ui/components/my_elevated_button.dart';
 
 import '/data/entitiy/cart_meal.dart';
 import '/data/entitiy/meal.dart';
@@ -50,7 +51,7 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                         child: Row(children: [
                           TextButton(
                               onPressed: () {
-                                if (amount > 0) {
+                                if (amount > 1) {
                                   setState(() => amount--);
                                 }
                               },
@@ -100,25 +101,21 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
           const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ElevatedButton(
-              onPressed: () {
-                var cartMeal = CartMeal(
-                    id: widget.meal.id,
-                    name: widget.meal.name,
-                    imgName: widget.meal.imgName,
-                    price: widget.meal.price,
-                    amount: amount,
-                    userName: MyCartRepository.userName);
+            child: MyElevatedButton(
+                text: "ADD TO CART",
+                onPressed: () {
+                  var cartMeal = CartMeal(
+                      id: widget.meal.id,
+                      name: widget.meal.name,
+                      imgName: widget.meal.imgName,
+                      price: widget.meal.price,
+                      amount: amount,
+                      userName: MyCartRepository.userName);
 
-                print(cartMeal.amount);
-                context.read<MealDetailsPageCubit>().addToCart(cartMeal);
-                Navigator.pop(context);
-              },
-              child: const Text(
-                "ADD TO CART",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-            ),
+                  print(cartMeal.amount);
+                  context.read<MealDetailsPageCubit>().addToCart(cartMeal);
+                  Navigator.pop(context);
+                }),
           ),
         ],
       ),

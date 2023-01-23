@@ -8,7 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartMealCard extends StatelessWidget {
   final CartMeal cartMeal;
-  const CartMealCard({super.key, required this.cartMeal});
+  final bool onDelivery;
+  const CartMealCard(
+      {super.key, required this.cartMeal, required this.onDelivery});
 
   @override
   Widget build(BuildContext context) {
@@ -52,16 +54,20 @@ class CartMealCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              GestureDetector(
-                onTap: () => context
-                    .read<MyCartPageCubit>()
-                    .confirmDelete(context, cartMeal),
-                child: const MyOutlinedContainer(
-                    child: Icon(
-                  Icons.delete,
-                  color: primaryColor,
-                )),
-              ),
+              onDelivery
+                  ? const SizedBox(
+                      height: 45,
+                    )
+                  : GestureDetector(
+                      onTap: () => context
+                          .read<MyCartPageCubit>()
+                          .confirmDelete(context, cartMeal),
+                      child: const MyOutlinedContainer(
+                          child: Icon(
+                        Icons.delete,
+                        color: primaryColor,
+                      )),
+                    ),
               MyElevatedContainer(
                 child: Text(
                   "x${cartMeal.amount}",
