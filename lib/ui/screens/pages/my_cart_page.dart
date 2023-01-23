@@ -4,6 +4,7 @@ import 'package:bootcamp_final_app/data/entitiy/cart_meal.dart';
 import 'package:bootcamp_final_app/data/entitiy/cart_meals_response.dart';
 import 'package:bootcamp_final_app/ui/components/cart_meal_card.dart';
 import 'package:bootcamp_final_app/ui/components/my_elevated_button.dart';
+import 'package:bootcamp_final_app/ui/components/order_in_delivery_card.dart';
 import 'package:bootcamp_final_app/ui/cubit/my_cart_page_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +18,6 @@ class MyCartPage extends StatefulWidget {
 }
 
 class _MyCartPageState extends State<MyCartPage> {
-  bool orderConfirmed = false;
   @override
   void initState() {
     super.initState();
@@ -61,7 +61,9 @@ class _MyCartPageState extends State<MyCartPage> {
                         padding: const EdgeInsets.only(bottom: 10),
                         child: CartMealCard(
                           cartMeal: cartMeals[index],
-                          onDelivery: orderConfirmed,
+                          onDelivery: context
+                              .read<MyCartPageCubit>()
+                              .getOrderConfirmed(),
                         ),
                       );
                     }))),
@@ -87,38 +89,8 @@ class _MyCartPageState extends State<MyCartPage> {
                   ]),
             ),
             (() {
-              if (orderConfirmed) {
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(width: 2, color: primaryColor),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(5),
-                        width: 80,
-                        height: 75,
-                        child: Lottie.asset(
-                          onDeliveryAnimation,
-                          height: 100,
-                        ),
-                      ),
-                      const Expanded(
-                        //in case of an overlfow
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            "Your order is being delivered...",
-                            softWrap: false,
-                            overflow: TextOverflow.fade,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                );
+              if (context.read<MyCartPageCubit>().getOrderConfirmed()) {
+                return const OrderInDeliveryCard();
               } else {
                 return Container(
                   padding: const EdgeInsets.symmetric(vertical: 10),
@@ -126,12 +98,17 @@ class _MyCartPageState extends State<MyCartPage> {
                   child: MyElevatedButton(
                       text: "CONFIRM ORDER",
                       onPressed: () {
+                        //displayes the confirm snackbar
                         context.read<MyCartPageCubit>().confirmOrder(context,
                             () {
                           ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                          setState(() {
-                            orderConfirmed = true;
-                          });
+                          Future.delayed(
+                              Duration.zero,
+                              //updates the confirmed status globally
+                              () => context
+                                  .read<MyCartPageCubit>()
+                                  .confirmCurrentOrder()).then((_) =>
+                              context.read<MyCartPageCubit>().getCartMeals());
                           print("Order Confirmed!");
                         });
                       }),

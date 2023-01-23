@@ -8,8 +8,14 @@ import 'package:http/http.dart' as http;
 class MyCartRepository {
   static const String userName = "orhun_rustuoglu";
   int totalPrice = 0;
+  bool orderConfirmed = false;
 
   int get getTotalPrice => totalPrice;
+  bool get getOrderConfirmed => orderConfirmed;
+
+  void confirmCurrentOrder() {
+    orderConfirmed = true;
+  }
 
   Future<CartMealsResponse> getCartMeals() async {
     var url = Uri.parse(

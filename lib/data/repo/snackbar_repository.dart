@@ -1,11 +1,39 @@
-import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
-import 'package:bootcamp_final_app/data/entitiy/cart_meal.dart';
+import '/data/constants/animations.dart';
+import '/data/constants/custom_colors.dart';
+import '/data/entitiy/cart_meal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../ui/cubit/my_cart_page_cubit.dart';
 
 class SnackbarRepository {
+  // static void showActiveOrderExistsSnackbar(BuildContext context) {
+  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //       behavior: SnackBarBehavior.floating,
+  //       backgroundColor: backgroundColor,
+  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+  //       content: Row(
+  //         children: [
+  //           Container(
+  //             padding: const EdgeInsets.all(5),
+  //             width: 80,
+  //             height: 75,
+  //             child: Lottie.asset(
+  //               onDeliveryAnimation,
+  //               height: 100,
+  //             ),
+  //           ),
+  //           const Expanded(
+  //               child: Text(
+  //             "You already have an active order!\nYou cannot order before delivery.",
+  //             style:
+  //                 TextStyle(fontWeight: FontWeight.bold, color: textColorDark),
+  //           )),
+  //         ],
+  //       )));
+  // }
+
   static void showConfirmOrderSnackbar(
       BuildContext context, Function onPressed) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(

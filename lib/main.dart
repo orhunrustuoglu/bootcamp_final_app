@@ -60,6 +60,7 @@ class MyApp extends StatelessWidget {
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
+                elevation: 0,
                 backgroundColor: primaryColor,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

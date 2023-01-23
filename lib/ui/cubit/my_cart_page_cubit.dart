@@ -14,6 +14,14 @@ class MyCartPageCubit extends Cubit<CartMealsResponse> {
     return cMRepo.getTotalPrice;
   }
 
+  bool getOrderConfirmed() {
+    return cMRepo.getOrderConfirmed;
+  }
+
+  void confirmCurrentOrder() {
+    cMRepo.confirmCurrentOrder();
+  }
+
   Future<void> getCartMeals() async {
     var cartMealsResponse = await cMRepo.getCartMeals();
     emit(cartMealsResponse);

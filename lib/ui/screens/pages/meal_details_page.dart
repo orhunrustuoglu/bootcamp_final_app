@@ -1,5 +1,7 @@
 import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
 import 'package:bootcamp_final_app/ui/components/my_elevated_button.dart';
+import 'package:bootcamp_final_app/ui/components/my_elevated_container.dart';
+import 'package:bootcamp_final_app/ui/components/order_in_delivery_card.dart';
 
 import '/data/entitiy/cart_meal.dart';
 import '/data/entitiy/meal.dart';
@@ -18,6 +20,12 @@ class MealDetailsPage extends StatefulWidget {
 
 class _MealDetailsPageState extends State<MealDetailsPage> {
   int amount = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<MealDetailsPageCubit>().getOrderConfirmed();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,24 +107,34 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
             ),
           ),
           const SizedBox(height: 25),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: MyElevatedButton(
-                text: "ADD TO CART",
-                onPressed: () {
-                  var cartMeal = CartMeal(
-                      id: widget.meal.id,
-                      name: widget.meal.name,
-                      imgName: widget.meal.imgName,
-                      price: widget.meal.price,
-                      amount: amount,
-                      userName: MyCartRepository.userName);
+          BlocBuilder<MealDetailsPageCubit, bool>(
+              builder: ((context, confirmedStatus) {
+            if (confirmedStatus) {
+              return const OrderInDeliveryCard();
+            } else {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: MyElevatedButton(
+                    text: "ADD TO CART",
+                    onPressed: () {
+                      // context
+                      //     .read<MealDetailsPageCubit>()
+                      //     .showActiveOrderExistsSnackbar(context);
+                      var cartMeal = CartMeal(
+                          id: widget.meal.id,
+                          name: widget.meal.name,
+                          imgName: widget.meal.imgName,
+                          price: widget.meal.price,
+                          amount: amount,
+                          userName: MyCartRepository.userName);
 
-                  print(cartMeal.amount);
-                  context.read<MealDetailsPageCubit>().addToCart(cartMeal);
-                  Navigator.pop(context);
-                }),
-          ),
+                      print(cartMeal.amount);
+                      context.read<MealDetailsPageCubit>().addToCart(cartMeal);
+                      Navigator.pop(context);
+                    }),
+              );
+            }
+          })),
         ],
       ),
     );
