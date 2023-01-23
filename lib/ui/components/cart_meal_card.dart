@@ -39,7 +39,7 @@ class CartMealCard extends StatelessWidget {
                       color: textColorDark),
                 ),
                 Text(
-                  "${cartMeal.price}₺",
+                  "${cartMeal.price * cartMeal.amount}₺",
                   style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,

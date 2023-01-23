@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
-
 import '/data/entitiy/cart_meal.dart';
 
 import '/data/entitiy/cart_meals_response.dart';
