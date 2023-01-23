@@ -1,6 +1,9 @@
+import '/ui/cubit/my_cart_page_cubit.dart';
+import 'package:flutter/material.dart';
+
 import '/data/entitiy/cart_meal.dart';
 import '/data/repo/my_cart_repository.dart';
-import '/data/repo/snackbar_repository.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MealDetailsPageCubit extends Cubit<bool> {
@@ -12,8 +15,10 @@ class MealDetailsPageCubit extends Cubit<bool> {
     await cMRepo.addToCart(cartMeal);
   }
 
-  void getOrderConfirmed() {
-    cMRepo.confirmCurrentOrder();
+  void getOrderConfirmed(BuildContext context) {
+    if (context.read<MyCartPageCubit>().getOrderConfirmed()) {
+      cMRepo.confirmCurrentOrder();
+    }
     print(cMRepo.getOrderConfirmed);
     emit(cMRepo.getOrderConfirmed);
   }

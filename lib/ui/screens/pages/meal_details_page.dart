@@ -24,7 +24,7 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
   @override
   void initState() {
     super.initState();
-    context.read<MealDetailsPageCubit>().getOrderConfirmed();
+    context.read<MealDetailsPageCubit>().getOrderConfirmed(context);
   }
 
   @override
