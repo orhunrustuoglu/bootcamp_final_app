@@ -23,7 +23,7 @@ class MyCartRepository {
           CartMealsResponse.fromJson(json.decode(response.body));
       totalPrice = 0;
       for (var m in cartMealsResponse.cartMeals) {
-        totalPrice += m.price;
+        totalPrice += m.price * m.amount;
       }
       return cartMealsResponse;
     } else {
