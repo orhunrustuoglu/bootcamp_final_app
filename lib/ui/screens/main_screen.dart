@@ -1,6 +1,6 @@
-import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
-import 'package:bootcamp_final_app/ui/components/my_elevated_container.dart';
-import 'package:bootcamp_final_app/ui/cubit/home_page_cubit.dart';
+import '/data/constants/custom_colors.dart';
+import '/ui/components/my_elevated_container.dart';
+import '/ui/cubit/home_page_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '/ui/screens/pages/home_page.dart';

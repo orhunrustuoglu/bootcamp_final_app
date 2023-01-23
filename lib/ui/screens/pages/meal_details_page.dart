@@ -1,7 +1,7 @@
-import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
-import 'package:bootcamp_final_app/ui/components/my_elevated_button.dart';
-import 'package:bootcamp_final_app/ui/components/my_elevated_container.dart';
-import 'package:bootcamp_final_app/ui/components/order_in_delivery_card.dart';
+import '/data/constants/custom_colors.dart';
+import '/ui/components/my_elevated_button.dart';
+import '/ui/components/my_elevated_container.dart';
+import '/ui/components/order_in_delivery_card.dart';
 
 import '/data/entitiy/cart_meal.dart';
 import '/data/entitiy/meal.dart';

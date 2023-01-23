@@ -1,4 +1,4 @@
-import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
+import '/data/constants/custom_colors.dart';
 
 import '/ui/cubit/my_cart_page_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

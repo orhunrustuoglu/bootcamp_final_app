@@ -1,4 +1,4 @@
-import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
+import '/data/constants/custom_colors.dart';
 import 'package:flutter/material.dart';
 
 class MyOutlinedContainer extends StatelessWidget {

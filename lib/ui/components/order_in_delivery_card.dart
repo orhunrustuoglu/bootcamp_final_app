@@ -1,5 +1,5 @@
-import 'package:bootcamp_final_app/data/constants/animations.dart';
-import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
+import '/data/constants/animations.dart';
+import '/data/constants/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';

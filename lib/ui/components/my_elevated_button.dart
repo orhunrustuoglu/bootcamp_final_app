@@ -1,4 +1,4 @@
-import 'package:bootcamp_final_app/data/entitiy/cart_meal.dart';
+import '/data/entitiy/cart_meal.dart';
 import 'package:flutter/material.dart';
 
 class MyElevatedButton extends StatelessWidget {

@@ -1,6 +1,6 @@
-import 'package:bootcamp_final_app/data/constants/animations.dart';
-import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
-import 'package:bootcamp_final_app/ui/screens/main_screen.dart';
+import '/data/constants/animations.dart';
+import '/data/constants/custom_colors.dart';
+import '/ui/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

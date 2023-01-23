@@ -1,4 +1,4 @@
-import 'package:bootcamp_final_app/data/entitiy/meal.dart';
+import '/data/entitiy/meal.dart';
 
 import '../../data/entitiy/meals_response.dart';
 import '/data/repo/meals_repository.dart';

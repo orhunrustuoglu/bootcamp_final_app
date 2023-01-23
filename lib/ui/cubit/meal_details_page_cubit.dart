@@ -1,6 +1,6 @@
-import 'package:bootcamp_final_app/data/entitiy/cart_meal.dart';
-import 'package:bootcamp_final_app/data/repo/my_cart_repository.dart';
-import 'package:bootcamp_final_app/data/repo/snackbar_repository.dart';
+import '/data/entitiy/cart_meal.dart';
+import '/data/repo/my_cart_repository.dart';
+import '/data/repo/snackbar_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MealDetailsPageCubit extends Cubit<bool> {

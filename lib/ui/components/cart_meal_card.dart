@@ -1,8 +1,8 @@
-import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
-import 'package:bootcamp_final_app/data/entitiy/cart_meal.dart';
-import 'package:bootcamp_final_app/ui/components/my_elevated_container.dart';
-import 'package:bootcamp_final_app/ui/components/my_outlined_container.dart';
-import 'package:bootcamp_final_app/ui/cubit/my_cart_page_cubit.dart';
+import '/data/constants/custom_colors.dart';
+import '/data/entitiy/cart_meal.dart';
+import '/ui/components/my_elevated_container.dart';
+import '/ui/components/my_outlined_container.dart';
+import '/ui/cubit/my_cart_page_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

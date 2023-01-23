@@ -1,11 +1,8 @@
-import 'package:bootcamp_final_app/data/constants/custom_colors.dart';
-import 'package:bootcamp_final_app/ui/cubit/meal_details_page_cubit.dart';
-import 'package:bootcamp_final_app/ui/cubit/my_cart_page_cubit.dart';
-import 'package:bootcamp_final_app/ui/screens/splash_screen.dart';
-import 'package:flutter/services.dart';
-
+import '/data/constants/custom_colors.dart';
+import '/ui/cubit/meal_details_page_cubit.dart';
+import '/ui/cubit/my_cart_page_cubit.dart';
+import '/ui/screens/splash_screen.dart';
 import '/ui/cubit/home_page_cubit.dart';
-import 'ui/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
