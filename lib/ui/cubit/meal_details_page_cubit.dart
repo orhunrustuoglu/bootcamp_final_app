@@ -12,6 +12,20 @@ class MealDetailsPageCubit extends Cubit<bool> {
   var cMRepo = MyCartRepository();
 
   Future<void> addToCart(CartMeal cartMeal) async {
+    bool alreadyExists = false;
+    int amount = 0;
+    var cartMealsResponse = await cMRepo.getCartMeals();
+
+    for (var m in cartMealsResponse.cartMeals) {
+      //find if the same meal already exists within the cart
+      if (m.name == cartMeal.name) {
+        alreadyExists = true;
+        amount = m.amount;
+        cartMeal.amount += m.amount;
+        await cMRepo.deleteCartMeal(m);
+      }
+      break; //finding one match is enough since every addition goes through this control
+    }
     await cMRepo.addToCart(cartMeal);
   }
 

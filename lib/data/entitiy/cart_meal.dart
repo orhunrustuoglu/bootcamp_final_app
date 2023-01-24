@@ -1,5 +1,6 @@
 class CartMeal {
-  final int id, price, amount;
+  final int id, price;
+  int amount;
   final String name, imgName, userName;
 
   CartMeal(
