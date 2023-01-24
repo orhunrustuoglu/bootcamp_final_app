@@ -47,7 +47,8 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 10),
                 const Center(
                   child: Text(
-                    "No such meal!",
+                    "Böyle bir yemek mevcut değil.",
+                    textAlign: TextAlign.center,
                     style: TextStyle(color: textColorLight, fontSize: 16),
                   ),
                 )
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               if (popularMeals.isNotEmpty)
                 const Text(
-                  "Popular",
+                  "Popüler",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 22,
@@ -84,7 +85,7 @@ class _HomePageState extends State<HomePage> {
               if (popularMeals.isNotEmpty) const SizedBox(height: 30),
               if (recommendationMeals.isNotEmpty)
                 const Text(
-                  "Recommendations",
+                  "Önerilerimiz",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 22,

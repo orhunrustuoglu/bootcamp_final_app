@@ -43,7 +43,7 @@ class _MyCartPageState extends State<MyCartPage> {
             const SizedBox(height: 20),
             const Center(
               child: Text(
-                "Your cart is empty...",
+                "Sepetiniz boş...",
                 style: TextStyle(color: textColorLight, fontSize: 16),
               ),
             )
@@ -76,7 +76,7 @@ class _MyCartPageState extends State<MyCartPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      "Total: ",
+                      "Toplam: ",
                       style: TextStyle(color: textColorDark, fontSize: 16),
                     ),
                     Text(
@@ -96,7 +96,7 @@ class _MyCartPageState extends State<MyCartPage> {
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   width: double.infinity,
                   child: MyElevatedButton(
-                      text: "CONFIRM ORDER",
+                      text: "SİPARİŞİ ONAYLA",
                       onPressed: () {
                         //displayes the confirm snackbar
                         context.read<MyCartPageCubit>().confirmOrder(context,

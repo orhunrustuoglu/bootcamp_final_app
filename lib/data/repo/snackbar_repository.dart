@@ -44,7 +44,7 @@ class SnackbarRepository {
           children: [
             const Expanded(
                 child: Text(
-              "Are you sure you want to order?",
+              "Siparişi onaylamak istediğinize emin misiniz?",
               style:
                   TextStyle(fontWeight: FontWeight.bold, color: textColorDark),
             )),
@@ -55,7 +55,8 @@ class SnackbarRepository {
                   color: primaryColor,
                 ),
                 label: const Text(
-                  "ORDER",
+                  "SİPARİŞ\nVER",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       color: primaryColor, fontWeight: FontWeight.bold),
                 ))
@@ -72,7 +73,7 @@ class SnackbarRepository {
           children: [
             Expanded(
                 child: Text(
-              "Are you sure you want to delete:\n${cartMeal.name}?",
+              "${cartMeal.name} ögesini silmek istediğinize emin misiniz?",
               style: const TextStyle(
                   fontWeight: FontWeight.bold, color: textColorDark),
             )),
@@ -86,7 +87,7 @@ class SnackbarRepository {
                   color: Colors.red,
                 ),
                 label: const Text(
-                  "DELETE",
+                  "SİL",
                   style:
                       TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
                 ))

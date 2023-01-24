@@ -31,7 +31,7 @@ class OrderInDeliveryCard extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Text(
-                "Your order is being delivered...",
+                "Siparişiniz teslim ediliyor...",
                 softWrap: false,
                 overflow: TextOverflow.fade,
                 style: TextStyle(fontSize: 16),

@@ -95,7 +95,7 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
                 ),
                 const SizedBox(height: 15),
                 const Text(
-                  "Food Details",
+                  "Açıklama",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 5),
@@ -118,7 +118,7 @@ class _MealDetailsPageState extends State<MealDetailsPage> {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: MyElevatedButton(
-                    text: "ADD TO CART",
+                    text: "SEPETE EKLE",
                     onPressed: () {
                       // context
                       //     .read<MealDetailsPageCubit>()

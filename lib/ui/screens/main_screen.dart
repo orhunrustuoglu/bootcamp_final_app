@@ -34,9 +34,10 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: !isSearching
-            ? Text(screenIndex == 0 ? "Menu" : "My Cart")
-            : Container(
+        title: (() {
+          if (screenIndex == 0) {
+            if (isSearching) {
+              return Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
@@ -49,7 +50,14 @@ class _MainScreenState extends State<MainScreen> {
                   onChanged: (query) =>
                       context.read<HomePageCubit>().search(query),
                 ),
-              ),
+              );
+            } else {
+              return const Text("Menü");
+            }
+          } else {
+            return const Text("Sepetim");
+          }
+        }()),
         actions: [
           if (screenIndex == 0)
             Padding(
@@ -80,7 +88,7 @@ class _MainScreenState extends State<MainScreen> {
                   Icons.home_rounded,
                   size: 42,
                 ),
-                label: "Home"),
+                label: ""),
             BottomNavigationBarItem(
                 icon: SizedBox(
                   child: Icon(
@@ -88,7 +96,7 @@ class _MainScreenState extends State<MainScreen> {
                     size: 28,
                   ),
                 ),
-                label: "My Cart"),
+                label: ""),
           ]),
     );
   }
