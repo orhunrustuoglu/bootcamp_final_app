@@ -23,8 +23,8 @@ class MealDetailsPageCubit extends Cubit<bool> {
         amount = m.amount;
         cartMeal.amount += m.amount;
         await cMRepo.deleteCartMeal(m);
+        break; //finding one match is enough since every addition goes through this control
       }
-      break; //finding one match is enough since every addition goes through this control
     }
     await cMRepo.addToCart(cartMeal);
   }
